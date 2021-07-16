@@ -1,0 +1,23 @@
+.input-login{
+    height: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.015);
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border-radius: 46px;
+    margin-top: 0.5rem;
+    background: rgba(255, 255, 255, 0.015);
+    color: #74788d;
+}
+
+.input-login:focus{
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+    background: rgba(255, 255, 255, 0.015);
+}
+
+.btn-login{
+    height: 50px;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    border-radius: 2rem;
+}
