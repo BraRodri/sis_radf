@@ -11,7 +11,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
+                <li class="nav-item {{ ! Route::is('home') ?: 'active' }}">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item dropdown ">
@@ -49,13 +49,13 @@
                         <a class="dropdown-item" href="#">Batallones</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{ ! Route::is('usuarios') ?: 'active' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Usuarios
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Listar / Agregar / Permisos y demas</a>
+                        <a class="dropdown-item" href="{{ route('usuarios') }}">Listar / Agregar / Permisos y demas</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

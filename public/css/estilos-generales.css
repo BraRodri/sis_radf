@@ -15,3 +15,34 @@
     -o-background-size: cover;
     background-size: cover;
 }
+
+.bg-principal{
+    background-color: #3490dc;
+    background-image: url('../images/fondo.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 180px;
+    color: #fff !important;
+}
+
+.bg-principal h3{
+    padding-top: 110px;
+}
+
+.contenedor-principal{
+    margin-top: 40px;
+}
+
+.card-header{
+    background-color: #fff;;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    height: calc(1.5em + 0.5rem + 2px);
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border: 1px solid;
+    border-radius: 0.2rem;
+}
