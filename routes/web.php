@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegistroArchivosController;
 use App\Http\Controllers\UsuariosController;
 
 /*
@@ -31,5 +32,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/usuarios/delete', [UsuariosController::class, 'delete'])->name('usuarios.delete');
     Route::get('/usuarios/view/{id}', [UsuariosController::class, 'view'])->name('usuarios.view');
     Route::post('/usuarios/updated', [UsuariosController::class, 'updated'])->name('usuarios.updated');
+
+    //registro
+    Route::get('/registro/archivos', [RegistroArchivosController::class, 'archivos'])->name('registro.archivos');
+    Route::get('/registro/historial', [RegistroArchivosController::class, 'historial'])->name('registro.historial');
 });
 

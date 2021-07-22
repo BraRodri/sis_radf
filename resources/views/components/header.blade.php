@@ -14,16 +14,15 @@
                 <li class="nav-item {{ ! Route::is('home') ?: 'active' }}">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
-                <li class="nav-item dropdown ">
+                <li class="nav-item dropdown {{ ! Route::is('registro.archivos') ?: 'active' }} {{ ! Route::is('registro.historial') ?: 'active' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Registro
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Imagen</a>
-                        <a class="dropdown-item" href="#">Video</a>
+                        <a class="dropdown-item {{ ! Route::is('registro.archivos') ?: 'active' }}" href="{{ route('registro.archivos') }}">Archivos</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Historial</a>
+                        <a class="dropdown-item {{ ! Route::is('registro.historial') ?: 'active' }}" href="{{ route('registro.historial') }}">Historial</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -55,7 +54,7 @@
                         Usuarios
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('usuarios') }}">Listar / Agregar / Permisos y demas</a>
+                        <a class="dropdown-item {{ ! Route::is('usuarios') ?: 'active' }}" href="{{ route('usuarios') }}">Listar / Agregar / Permisos y demas</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
