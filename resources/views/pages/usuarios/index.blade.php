@@ -17,7 +17,7 @@
                 @if (Session::has('error'))
                     @if (Session::get('error') == 'success')
                         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <strong>¡Usuario Creado!</strong> Se proceso la información exitosamente!.
+                            <strong>¡Usuario Creado!</strong> Se proceso la información exitosamente.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -25,7 +25,7 @@
                     @endif
                     @if (Session::get('error') == 'success_updated')
                         <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                            <strong>¡Usuario Actualizado!</strong> Se proceso la información correctamente!.
+                            <strong>¡Usuario Actualizado!</strong> Se proceso la información correctamente.
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
