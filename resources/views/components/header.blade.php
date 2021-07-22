@@ -79,7 +79,7 @@
                         Usuario
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <span class="dropdown-item-text">{{ Auth::user()->name }}</span>
+                        <span class="dropdown-item-text">{{ Auth::user()->names }}</span>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Cerrar Sesión</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

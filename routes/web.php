@@ -27,5 +27,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     //usuarios
     Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
+    Route::post('/usuarios/create', [UsuariosController::class, 'create'])->name('usuarios.create');
+    Route::post('/usuarios/delete', [UsuariosController::class, 'delete'])->name('usuarios.delete');
+    Route::get('/usuarios/view/{id}', [UsuariosController::class, 'view'])->name('usuarios.view');
+    Route::post('/usuarios/updated', [UsuariosController::class, 'updated'])->name('usuarios.updated');
 });
 
