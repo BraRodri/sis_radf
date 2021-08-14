@@ -11,7 +11,29 @@
     </div>
 
     <div class="container contenedor-principal">
-        <div class="row">
+        <div class="row mb-5">
+
+            <div class="col-12 mb-2">
+                @if (Session::has('error'))
+                    @if (Session::get('error') == 'success')
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <strong>¡Archivos Guardados!</strong> Se proceso la información exitosamente.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                    @if (Session::get('error') == 'failure')
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>¡ERROR!</strong> Se ha producido un error, favor vuelva a intentarlo.
+                            Si el error persiste favor comunicarse al administrador.
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    @endif
+                @endif
+            </div>
 
             <div class="col-12">
                 <div class="card shadow">
@@ -20,26 +42,44 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table" id="dataTableHistorial" width="100%" cellspacing="0">
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
                                         <th>N°</th>
+                                        <th>Nombre</th>
                                         <th>Usuario</th>
                                         <th>Archivo</th>
-                                        <th>Creado</th>
                                         <th>Cantidad</th>
+                                        <th>Creado</th>
                                     </tr>
                                 </thead>
                                 <tfoot>
                                     <tr>
                                         <th>N°</th>
+                                        <th>Nombre</th>
                                         <th>Usuario</th>
                                         <th>Archivo</th>
-                                        <th>Creado</th>
                                         <th>Cantidad</th>
+                                        <th>Creado</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
+                                    @if(count($archivos) > 0)
+                                        @foreach($archivos as $key => $value)
+                                            <tr>
+                                                <th>{{ $value->id }}</th>
+                                                <td>{{ $value->name }}</td>
+                                                <td>{{ $value->user->names }}</td>
+                                                <td>
+                                                    <a href="{{ route('registro.ver.archivos', $value->id) }}" class="btn btn-primary">Ver Archivos</a>
+                                                </td>
+                                                <td>
+                                                    {{ count($value->groups) }}
+                                                </td>
+                                                <td>{{ $value->created_at }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
@@ -54,36 +94,6 @@
         <script>
             $(document).ready(function () {
 
-                $('#dataTableHistorial').DataTable({
-                    "language": {
-                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-                    },
-                    columnDefs: [{
-                            width: "180px",
-                            targets: 3
-                        }],
-                    dom: 'Blfrtip',
-                    buttons:[
-                        {
-                            extend: "excelHtml5",
-                            text: "<i class='fas fa-file-excel'></i> EXCEL",
-                            titleAttr: "Exportar a Excel",
-                            className: 'btn btn-success'
-                        },
-                        {
-                            extend: "pdfHtml5",
-                            text: '<i class="fas fa-file-pdf"></i> PDF',
-                            titleAttr: "Exportar a PDF",
-                            className: 'btn btn-danger'
-                        },
-                        {
-                            extend: "print",
-                            text: '<i class="fas fa-print"></i> IMPRIMIR',
-                            titleAttr: "Imprimir Datos",
-                            className: 'btn btn-dark'
-                        }
-                    ]
-                });
 
             });
         </script>

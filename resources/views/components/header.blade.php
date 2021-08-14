@@ -38,23 +38,24 @@
                         <a class="dropdown-item" href="#">Recorrido GPS</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{ ! Route::is('seccional.brigada') ?: 'active' }} {{ ! Route::is('seccional.batallones') ?: 'active' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Seccional
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Brigada</a>
-                        <a class="dropdown-item" href="#">Batallones</a>
+                        <a class="dropdown-item {{ ! Route::is('seccional.brigada') ?: 'active' }}" href="{{ route('seccional.brigada') }}">Brigada</a>
+                        <a class="dropdown-item {{ ! Route::is('seccional.batallones') ?: 'active' }}" href="{{ route('seccional.batallones') }}">Batallones</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown {{ ! Route::is('usuarios') ?: 'active' }}">
+                <li class="nav-item dropdown {{ ! Route::is('usuarios') ?: 'active' }} {{ ! Route::is('guardia') ?: 'active' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Usuarios
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item {{ ! Route::is('usuarios') ?: 'active' }}" href="{{ route('usuarios') }}">Listar / Agregar / Permisos y demas</a>
+                        <a class="dropdown-item {{ ! Route::is('guardia') ?: 'active' }}" href="{{ route('guardia') }}">Guardia</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

@@ -11,6 +11,8 @@
         <link href="{{ asset('images/icon.jpeg') }}" rel="icon">
 
         <!-- css -->
+        <script src="{{ asset('js/app.js') }}" defer></script>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <x-css></x-css>
     </head>
     <body id="page-top">
@@ -18,8 +20,6 @@
         <x-header></x-header>
 
         {{ $slot }}
-
-        <x-footer></x-footer>
 
         <x-js>
             {{$js}}

@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow">
+                <div class="card shadow mb-5">
                     <div class="card-header d-flex align-content-center flex-wrap">
                         <h5 class="mt-2"><i class="fas fa-list"></i> Usuarios</h5>
                         <button class="ml-auto btn btn-outline-primary" data-toggle="modal" data-target="#modalCrearUsuario">

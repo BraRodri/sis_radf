@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-12">
-                <div class="card shadow">
+                <div class="card shadow mb-5">
                     <div class="card-header d-flex align-content-center flex-wrap">
                         <h5 class="mt-2"><i class="fas fa-user"></i> Usuario: <strong>{{ $user->names }}</strong></h5>
                     </div>
