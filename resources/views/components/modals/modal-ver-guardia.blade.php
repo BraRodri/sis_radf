@@ -22,6 +22,23 @@
                     </div>
 
                     <div class="form-row">
+                        <div class="form-group col-6">
+                            <label id="texto-form">Grado</label>
+                            <input type="text" class="form-control" id="gradoVer" name="descripcion" disabled>
+                        </div>
+
+                        <div class="form-group col-6">
+                            <label id="texto-form">Distintivo</label>
+                            <input type="text" class="form-control" id="distintivoVer" name="descripcion" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label id="texto-form">Brigada</label>
+                        <input type="text" class="form-control" id="brigadaVer" name="descripcion" disabled>
+                    </div>
+
+                    <div class="form-row">
                         <div class="form-group col-md-8">
                             <label id="texto-form">Fecha desde</label>
                             <input type="text" class="form-control" id="fecha_desdeVer" name="fecha_desde" value="13/08/2021 00:00" disabled>

@@ -7,7 +7,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="#" method="POST" id="form-subir-archivos" class="needs-validation" novalidate enctype="multipart/form-data">
+            <form action="{{ route('registro.archivos.agregar') }}" method="POST" id="form-subir-archivos" class="needs-validation" novalidate enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
 

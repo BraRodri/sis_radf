@@ -48,7 +48,7 @@
                         <a class="dropdown-item {{ ! Route::is('seccional.batallones') ?: 'active' }}" href="{{ route('seccional.batallones') }}">Batallones</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown {{ ! Route::is('usuarios') ?: 'active' }} {{ ! Route::is('guardia') ?: 'active' }}">
+                <li class="nav-item dropdown {{ ! Route::is('usuarios') ?: 'active' }} {{ ! Route::is('guardia') ?: 'active' }} {{ ! Route::is('permisos') ?: 'active' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Usuarios
@@ -56,6 +56,7 @@
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item {{ ! Route::is('usuarios') ?: 'active' }}" href="{{ route('usuarios') }}">Listar / Agregar / Permisos y demas</a>
                         <a class="dropdown-item {{ ! Route::is('guardia') ?: 'active' }}" href="{{ route('guardia') }}">Guardia</a>
+                        <a class="dropdown-item {{ ! Route::is('permisos') ?: 'active' }}" href="{{ route('permisos') }}">Permisos</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">

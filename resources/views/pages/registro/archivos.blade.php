@@ -66,6 +66,7 @@
     <x-slot name="js">
         <script type="text/javascript">
 
+            /*
             $('#form-subir-archivos').on('submit', function(e) {
 
                 // evito que propague el submit
@@ -139,6 +140,7 @@
                     });
 
             });
+            */
 
             function myEliminarArchivo(count) {
                 $(`#cont__${count}`).remove();

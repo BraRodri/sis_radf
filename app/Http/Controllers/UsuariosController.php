@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Batallones_users;
+use App\Models\Brigada_users;
+use App\Models\Guardia;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -184,6 +187,11 @@ class UsuariosController extends Controller
     public function delete(Request $request)
     {
         $id = $request->idUser;
+
+        Batallones_users::where('user_id', $id)->delete();
+        Brigada_users::where('user_id', $id)->delete();
+        Guardia::where('user_id', $id)->delete();
+
         if(User::findOrFail($id)->delete()){
             session()->flash('error', 'delete');
             return redirect()->route('usuarios');

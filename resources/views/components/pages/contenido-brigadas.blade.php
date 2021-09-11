@@ -22,7 +22,8 @@
                         <th>N.</th>
                         <th>Cedula</th>
                         <th>Nombre</th>
-                        <th>Creado</th>
+                        <th>Grado</th>
+                        <th>Distintivo</th>
                         <th>Acciones</th>
                     </tr>
                 </tfoot>
@@ -33,7 +34,8 @@
                                 <td>{{ $value->id }}</td>
                                 <td>{{ $value->user->document }}</td>
                                 <td>{{ $value->user->names }}</td>
-                                <td>{{ $value->created_at }}</td>
+                                <td>{{ $value->user->grado }}</td>
+                                <td>{{ $value->user->distintivo }}</td>
                                 <td><a href="{{ route('seccional.brigada.delete', $value->id) }}" class="btn btn-danger">Eliminar</a></td>
                             </tr>
                         @endforeach

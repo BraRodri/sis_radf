@@ -28,6 +28,9 @@ class RegistroArchivosController extends Controller
         $url = '';
         $type = '';
         $name_image = '';
+
+        dd($request);
+
         if($request->file('image')){
             $image = $request->file('image')->store('public/archivos');
             $url = Storage::url($image);
@@ -78,5 +81,10 @@ class RegistroArchivosController extends Controller
         return view('pages.registro.verArchivos')
             ->with('datos', $datos)
             ->with('archivo', $archivo);
+    }
+
+    public function prueba(Request $request)
+    {
+        dd($request);
     }
 }

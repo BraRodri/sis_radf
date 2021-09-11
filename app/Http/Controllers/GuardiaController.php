@@ -52,7 +52,10 @@ class GuardiaController extends Controller
                     'descripcion' => $value->descripcion,
                     'idGuardia' => $value->id,
                     'color' => '#3490dc',
-                    'nombreUsuario' => $value->user->names
+                    'nombreUsuario' => $value->user->names,
+                    'batallonUsuario' => $value->user->brigada,
+                    'gradoUsuario' => $value->user->grado,
+                    'distintivoUsuario' => $value->user->distintivo,
                 );
                 array_push($data, $nuevo_array);
             }

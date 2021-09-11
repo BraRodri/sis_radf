@@ -83,6 +83,10 @@
 
                         $('#usuario').val(info.event.extendedProps.nombreUsuario);
 
+                        $('#gradoVer').val(info.event.extendedProps.gradoUsuario);
+                        $('#distintivoVer').val(info.event.extendedProps.distintivoUsuario);
+                        $('#brigadaVer').val(info.event.extendedProps.batallonUsuario);
+
                         $('#modalVerGuardia').modal();
                     }
                 });

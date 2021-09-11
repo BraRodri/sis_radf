@@ -3,6 +3,7 @@
 use App\Http\Controllers\GuardiaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\RegistroArchivosController;
 use App\Http\Controllers\SeccionalController;
 use App\Http\Controllers\UsuariosController;
@@ -27,6 +28,7 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function () {
     //home
     Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::get('/prueba', [HomeController::class, 'prueba'])->name('pruebaa');
 
     //usuarios
     Route::get('/usuarios', [UsuariosController::class, 'index'])->name('usuarios');
@@ -41,6 +43,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/registro/archivos/agregar', [RegistroArchivosController::class, 'agregarArchivos'])->name('registro.archivos.agregar');
     Route::post('/registro/archivos/registrar', [RegistroArchivosController::class, 'insert'])->name('registro.archivos.insert');
     Route::get('/registro/archivos/ver/{id}', [RegistroArchivosController::class, 'verConjuntoArchivos'])->name('registro.ver.archivos');
+    Route::post('/registro/archivos/prueba', [RegistroArchivosController::class, 'prueba'])->name('prueba');
 
     //seccional
     Route::get('/seccional/brigada', [SeccionalController::class, 'brigada'])->name('seccional.brigada');
@@ -55,5 +58,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/guardia/crear', [GuardiaController::class, 'crear'])->name('guardia.crear');
     Route::get('/guardia/obtener', [GuardiaController::class, 'obtener'])->name('guardia.obtener');
     Route::post('/guardia/eliminar', [GuardiaController::class, 'eliminar'])->name('guardia.eliminar');
+
+    //permisos
+    Route::get('/permisos/view', [PermisosController::class, 'index'])->name('permisos');
+    Route::post('/permisos/crear', [PermisosController::class, 'insert'])->name('permisos.insert');
 });
 
