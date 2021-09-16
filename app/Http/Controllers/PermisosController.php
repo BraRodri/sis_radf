@@ -11,7 +11,9 @@ class PermisosController extends Controller
 {
     public function index()
     {
-        return view('pages.solicitudes.index');
+        $permisos = Permisos::orderBy('created_at', 'DESC')->get();
+        return view('pages.solicitudes.index')
+            ->with('permisos', $permisos);
     }
 
     public function insert(Request $request)
@@ -65,11 +67,11 @@ class PermisosController extends Controller
 
             $data_pdf = compact('data');
             $pdf = PDF::loadView('pdf.permiso', $data_pdf)->setPaper('a4', 'landscape');
-            //$pdf->save(storage_path('app/public/permisos/') . "permiso_n_{$id}.pdf");
-            return $pdf->stream("permiso_n_{$id}.pdf");
+            $pdf->save(storage_path('app/public/permisos/') . "permiso_n_{$id}.pdf");
+            //return $pdf->stream("permiso_n_{$id}.pdf");
 
-            //session()->flash('error', 'success');
-            //return redirect()->route('permisos');
+            session()->flash('error', 'success');
+            return redirect()->route('permisos');
         } else {
             session()->flash('error', 'failure');
             return redirect()->route('permisos');
