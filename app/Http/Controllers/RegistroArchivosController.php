@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Archives;
-use App\Models\Archives_groups;
 use Illuminate\Http\Request;
+use App\Models\Archives_groups;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use facedetection\FaceDetector\FaceDetector;
+use Illuminate\Support\Str;
 
 class RegistroArchivosController extends Controller
 {
@@ -29,18 +31,38 @@ class RegistroArchivosController extends Controller
         $type = '';
         $name_image = '';
 
-        dd($request);
+        $typeFileFormat = $request->file('image')->getClientMimeType();
+        $typeFile = explode("/", $typeFileFormat);
+        $name_image = $request->file('image')->getClientOriginalName();
 
+        $image = $request->file('image')->store('public/archivos');
+        $url = Storage::url($image);
+        //echo json_encode($image);
+        if($typeFile[0] === 'image'){
+
+            //$nameStorage = Str::uuid()->toString();
+            //$url = "/storage/archivos/". $nameStorage . '.jpeg';
+            $path = explode('/', $image);
+            $nombreAndFormat = explode('.', $path[2]);
+            $detector = new FaceDetector('detection.dat');
+            $detector->faceDetect($request->file('image'));
+            $detector->toJpeg($nombreAndFormat[0]);
+        }
+
+
+    echo json_encode(array('imagen' => $url, 'type' => 'success', 'name' => $name_image ));
+/*
         if($request->file('image')){
             $image = $request->file('image')->store('public/archivos');
             $url = Storage::url($image);
             $name_image = $request->file('image')->getClientOriginalName();
+            $typeFileFormat = $request->file('image')->getClientMimeType();
+            $typeFile = explode("/", $typeFileFormat);
             $type = 'success';
         } else {
             $type = 'failure';
         }
-
-        echo json_encode(array('imagen' => $url, 'type' => $type, 'name' => $name_image));
+        echo json_encode(array('imagen' => $url, 'type' => $type, 'name' => $name_image, 'typeFile' => $typeFile[0] ));*/
     }
 
     public function insert(Request $request)

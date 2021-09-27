@@ -66,7 +66,7 @@
     <x-slot name="js">
         <script type="text/javascript">
 
-            /*
+
             $('#form-subir-archivos').on('submit', function(e) {
 
                 // evito que propague el submit
@@ -97,7 +97,7 @@
                         contentType: false,
                         dataType:'json',
                         success: function(response) {
-
+                            console.log(response);
                             if(response.type == 'failure'){
                                 var message = '<div class="alert alert-danger"><strong>ERROR!</strong> Se ha producido un error, favor vuelva a intentarlo. Si el error persiste favor comunicarse al administrador.</div>';
                                 $thisModal.find('.modal-body').prepend(message);
@@ -113,14 +113,28 @@
                                     $thisModal.modal('hide');
                                 }, 1000);
 
+                                var retype = null;
+                                /*if(response.typeFile === "image"){
+                                    retype = `<img src="${response.imagen}" />`;
+                                }else{
+                                    retype = `<video width="400">
+                                            <source src="${response.imagen}">
+                                            Your browser does not support HTML5 video.
+                                            </video>`;
+                                }*/
+
+
                                 var bloque = `
                                     <li class="list-group-item d-flex" id="cont__${count}">
                                         <div class="mr-auto pt-2">
                                             ${response.name}
                                         </div>
-                                        <a href="${response.imagen}" data-fancybox="galeria-${count}" class="btn btn-primary mr-2">
+                                        <a data-fancybox="gallery" data-fancybox-type="iframe" href="${response.imagen}" data-width="640px !important" data-height="360px" class="btn btn-primary mr-2">
                                             Ver Archivo
                                         </a>
+
+
+
                                         <button type="button" class="btn btn-danger" onclick="myEliminarArchivo(${count})">Eliminar</button>
                                         <input type="hidden" name="nombreArchivos[]" value="${response.imagen}">
                                     </li>
@@ -140,7 +154,7 @@
                     });
 
             });
-            */
+
 
             function myEliminarArchivo(count) {
                 $(`#cont__${count}`).remove();

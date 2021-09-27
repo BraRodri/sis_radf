@@ -7,7 +7,7 @@ use App\Http\Controllers\PermisosController;
 use App\Http\Controllers\RegistroArchivosController;
 use App\Http\Controllers\SeccionalController;
 use App\Http\Controllers\UsuariosController;
-
+use App\Http\Controllers\SIS_RADFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -62,5 +62,9 @@ Route::group(['middleware' => 'auth'], function () {
     //permisos
     Route::get('/permisos/view', [PermisosController::class, 'index'])->name('permisos');
     Route::post('/permisos/crear', [PermisosController::class, 'insert'])->name('permisos.insert');
+
+    //SIS RADF
+    Route::get('/deteccionFacial', [SIS_RADFController::class, 'indexDeteccionFacial'])->name('deteccionFacial.index');
+    Route::post('/deteccionFacial', [SIS_RADFController::class, 'indexDeteccionFacial'])->name('deteccionFacial.index');
 });
 
