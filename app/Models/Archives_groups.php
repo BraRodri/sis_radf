@@ -11,6 +11,6 @@ class Archives_groups extends Model
     protected $table = 'archives_groups';
 
     protected $fillable = [
-        'archive_id', 'archivo', 'active'
+        'archive_id', 'archivo', 'active', 'type'
     ];
 }

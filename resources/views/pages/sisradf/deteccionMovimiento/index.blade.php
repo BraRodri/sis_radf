@@ -1,12 +1,12 @@
 <x-app-layout>
 
     @section('pagina')
-        Detección Facial
+        Detección Movimiento
     @endsection
 
     <div class="container-fluid m-0 p-0">
         <div class="bg-principal text-center">
-            <h3>Detección Facial</h3>
+            <h3>Detección Movimiento</h3>
         </div>
     </div>
 
@@ -37,10 +37,10 @@
 
             <div class="col-12">
                 <div class="card shadow">
-                    <form action="{{route('deteccionFacial.index')}}" method="post">
+                    <form action="{{route('deteccionMovimiento.index')}}" method="post">
                     @csrf
                         <div class="card-header d-flex align-content-center flex-wrap">
-                            <h5 class="mr-auto p-2"><i class="fas fa-camera-retro"></i> Detección facial</h5>
+                            <h5 class="mr-auto p-2"><i class="fas fa-video"></i> Detección movimiento</h5>
                             <div class="form-group mr-3">
                                 <label for="last_wash_date">Fecha inicial</label>
                                 <input
@@ -65,7 +65,7 @@
                                 <Button type="submit" class="btn btn-success mt-4 ml-3" >Buscar <i class="fas fa-search"></i></Button>
                             </div>
                             <div class="form-group">
-                                <a href="{{route('historialFacial.index')}}" class="btn btn-dark mt-4 ml-3" >Ver historial <i class="fas fa-history"></i></a>
+                                <a href="{{route('historialMovimiento.index')}}" class="btn btn-dark mt-4 ml-3" >Ver historial <i class="fas fa-history"></i></a>
                             </div>
                         </div>
 
@@ -83,10 +83,11 @@
                                                 $nameImage = $path[3];
                                                 $formated = explode('.', $nameImage);
                                             @endphp
-                                             <a data-fancybox="gallery" href="{{asset('/storage/archivosFacial/' . $formated[0] . '.jpeg')}}" class="img-fluid">
-                                                <img class="img-fluid" src="{{ asset('/storage/archivosFacial/' . $formated[0] . '.jpeg') }}" />
+                                             <a data-fancybox="sasas" data-fancybox-type="iframe" href="{{asset($archive->archivo)}}" class="img-fluid" data-width="640px !important" data-height="360px" >
+                                                <video class="img-fluid" playsinline controls controlsList="nodownload" >
+                                                    <source src="{{asset($archive->archivo)}}" /></video>
                                             <p>{{$nameImage}}</p>
-                                             </a>
+                                            </a>
                                         </div>
                                     @endforeach
                                 @endif

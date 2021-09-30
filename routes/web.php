@@ -66,5 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
     //SIS RADF
     Route::get('/deteccionFacial', [SIS_RADFController::class, 'indexDeteccionFacial'])->name('deteccionFacial.index');
     Route::post('/deteccionFacial', [SIS_RADFController::class, 'indexDeteccionFacial'])->name('deteccionFacial.index');
+    Route::get('/historialFacial', [SIS_RADFController::class, 'indexHistorialFacial'])->name('historialFacial.index');
+    Route::get('/deteccionMovimiento', [SIS_RADFController::class, 'indexDeteccionMovimiento'])->name('deteccionMovimiento.index');
+    Route::post('/deteccionMovimiento', [SIS_RADFController::class, 'indexDeteccionMovimiento'])->name('deteccionMovimiento.index');
+    Route::get('/historialMovimiento', [SIS_RADFController::class, 'indexHistorialMovimiento'])->name('historialMovimiento.index');
 });
 

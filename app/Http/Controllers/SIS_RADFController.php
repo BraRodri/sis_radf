@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Archives_groups;
+use Illuminate\Support\Facades\DB;
 
 class SIS_RADFController extends Controller
 {
@@ -15,11 +16,37 @@ class SIS_RADFController extends Controller
     public function indexDeteccionFacial(Request $request)
     {
         if(isset($request->fecha_inicial)){
-            $archives = Archives_groups::whereBetween('created_at', [$request->fecha_inicial, $request->fecha_final])->get();
+            $archives = Archives_groups::whereBetween('created_at', [$request->fecha_inicial, $request->fecha_final])
+                        ->where('type', 'image')
+                        ->get();
             return view('pages.sisradf.deteccionFacial.index', compact('archives'));
         }else{
             return view('pages.sisradf.deteccionFacial.index');
         }
+    }
+
+    public function indexHistorialFacial()
+    {
+        $archives = DB::table('archives_groups')->where('type', 'image')->simplePaginate(4); //Archives_groups::all()->paginate(4);
+        return view('pages.sisradf.deteccionFacial.indexHistory', compact('archives'));
+    }
+
+    public function indexDeteccionMovimiento(Request $request)
+    {
+        if(isset($request->fecha_inicial)){
+            $archives = Archives_groups::whereBetween('created_at', [$request->fecha_inicial, $request->fecha_final])
+                        ->where('type', 'video')
+                        ->get();
+            return view('pages.sisradf.deteccionMovimiento.index', compact('archives'));
+        }else{
+            return view('pages.sisradf.deteccionMovimiento.index');
+        }
+    }
+
+    public function indexHistorialMovimiento()
+    {
+        $archives = DB::table('archives_groups')->where('type', 'video')->simplePaginate(4); //Archives_groups::all()->paginate(4);
+        return view('pages.sisradf.deteccionMovimiento.indexHistory', compact('archives'));
     }
 
     /**

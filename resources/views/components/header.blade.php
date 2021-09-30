@@ -25,7 +25,11 @@
                         <a class="dropdown-item {{ ! Route::is('registro.historial') ?: 'active' }}" href="{{ route('registro.historial') }}">Historial</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown {{ ! Route::is('deteccionFacial.index') ?: 'active' }}">
+                <li class="nav-item dropdown
+                    {{ ! Route::is('deteccionFacial.index') ?: 'active' }}
+                    {{ ! Route::is('historialFacial.index') ?: 'active' }}
+                    {{ ! Route::is('deteccionMovimiento.index') ?: 'active' }}"
+                >
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         SIS RADF
@@ -33,7 +37,7 @@
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">A time</a>
                         <a class="dropdown-item {{ ! Route::is('deteccionFacial.index') ?: 'active' }}"  href="{{route('deteccionFacial.index')}}">Detección Facial</a>
-                        <a class="dropdown-item" href="#">Detección Movimiento</a>
+                        <a class="dropdown-item {{ ! Route::is('deteccionMovimiento.index') ?: 'active'}}" href="{{route('deteccionMovimiento.index')}}">Detección Movimiento</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Recorrido GPS</a>
                     </div>

@@ -19,7 +19,7 @@ class CreateArchivesGroupsTable extends Migration
             $table->foreignId('archive_id')->nullable()->constrained('archives');
             $table->longText('archivo');
             $table->integer('active')->default(0);
-
+            $table->text('type');
             $table->timestamps();
         });
     }
