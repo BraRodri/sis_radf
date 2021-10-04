@@ -63,16 +63,20 @@
                         <a class="dropdown-item {{ ! Route::is('permisos') ?: 'active' }}" href="{{ route('permisos') }}">Permisos</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown {{ ! Route::is('inventarioAlimentos.index') ?: 'active' }}
+                    {{ ! Route::is('inventarioAlmacen.index') ?: 'active' }}
+                    {{ ! Route::is('inventarioArmamento.index') ?: 'active' }}
+                    {{ ! Route::is('inventarioInsumos.index') ?: 'active' }}
+                ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Inventario
                     </a>
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Almacen TIC</a>
-                        <a class="dropdown-item" href="#">Armamento y Munición</a>
-                        <a class="dropdown-item" href="#">Alimentos</a>
-                        <a class="dropdown-item" href="#">Insumos Sanidad Militar</a>
+                        <a class="dropdown-item {{ ! Route::is('inventarioAlmacen.index') ?: 'active' }}" href="{{route('inventarioAlmacen.index')}}">Almacen TIC</a>
+                        <a class="dropdown-item {{ ! Route::is('inventarioArmamento.index') ?: 'active' }}" href="{{route('inventarioArmamento.index')}}">Armamento y Munición</a>
+                        <a class="dropdown-item {{ ! Route::is('inventarioAlimentos.index') ?: 'active' }}" href="{{route('inventarioAlimentos.index')}}">Alimentos</a>
+                        <a class="dropdown-item {{ ! Route::is('inventarioInsumos.index') ?: 'active' }}" href="{{route('inventarioInsumos.index')}}">Insumos Sanidad Militar</a>
                     </div>
                 </li>
                 <li class="nav-item">

@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\GuardiaController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GuardiaController;
 use App\Http\Controllers\PermisosController;
-use App\Http\Controllers\RegistroArchivosController;
-use App\Http\Controllers\SeccionalController;
-use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\SIS_RADFController;
+use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\SeccionalController;
+use App\Http\Controllers\InventarioController;
+use App\Http\Controllers\RegistroArchivosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -70,5 +71,20 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/deteccionMovimiento', [SIS_RADFController::class, 'indexDeteccionMovimiento'])->name('deteccionMovimiento.index');
     Route::post('/deteccionMovimiento', [SIS_RADFController::class, 'indexDeteccionMovimiento'])->name('deteccionMovimiento.index');
     Route::get('/historialMovimiento', [SIS_RADFController::class, 'indexHistorialMovimiento'])->name('historialMovimiento.index');
+
+
+    //Inventario
+    Route::get('/inventario/almacen', [InventarioController::class, 'indexAlmacen'])->name('inventarioAlmacen.index');
+    Route::get('/inventario/armamento', [InventarioController::class, 'indexArmamento'])->name('inventarioArmamento.index');
+    Route::get('/inventario/alimentos', [InventarioController::class, 'indexAlimentos'])->name('inventarioAlimentos.index');
+    Route::get('/inventario/insumos', [InventarioController::class, 'indexInsumos'])->name('inventarioInsumos.index');
+
+    Route::post('/inventario', [InventarioController::class, 'store'])->name('inventario.store');
+    Route::get('/inventario/edit/{inventario}', [InventarioController::class, 'edit'])->name('inventario.edit');
+    Route::post('/inventario/update/{inventario}', [InventarioController::class, 'update'])->name('inventario.update');
+    Route::post('/inventario/delete', [InventarioController::class, 'destroy'])->name('inventario.delete');
+
+    Route::get('/inventario/history/{inventario}', [InventarioController::class, 'indexHistory'])->name('inventarioHistory.index');
+    Route::post('/inventario/history/{inventario}', [InventarioController::class, 'storeHistory'])->name('inventarioHistorial.store');
 });
 
