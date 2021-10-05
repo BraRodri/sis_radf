@@ -13,21 +13,21 @@
             </ol>
             <div class="carousel-inner" role="listbox">
                 <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('{{ asset('images/uno.jpeg') }}')">
+                <div class="carousel-item active" style="background-image: url('{{ asset('images/uno1.jpeg') }}'); background-size: contain;">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2 class="display-4">Primera Imagen</h2>
+                        <h2 class="display-4"></h2>
                     </div>
                 </div>
                 <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('{{ asset('images/dos.jpeg') }}')">
+                <div class="carousel-item" style="background-image: url('{{ asset('images/dos2.jpeg') }}'); background-size: contain;">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2 class="display-4">Segunda Imagen</h2>
+                        <h2 class="display-4"></h2>
                     </div>
                 </div>
                 <!-- Slide Three - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('{{ asset('images/tres.jpeg') }}')">
+                <div class="carousel-item" style="background-image: url('{{ asset('images/tres3.jpeg') }}'); background-size: contain;">
                     <div class="carousel-caption d-none d-md-block">
-                        <h2 class="display-4">Tercera Imagen</h2>
+                        <h2 class="display-4"></h2>
                     </div>
                 </div>
             </div>

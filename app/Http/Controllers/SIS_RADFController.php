@@ -45,7 +45,7 @@ class SIS_RADFController extends Controller
 
     public function indexHistorialMovimiento()
     {
-        $archives = DB::table('archives_groups')->where('type', 'video')->simplePaginate(4); //Archives_groups::all()->paginate(4);
+        $archives = DB::table('archives_groups')->where('type', 'video')->simplePaginate(16); //Archives_groups::all()->paginate(4);
         return view('pages.sisradf.deteccionMovimiento.indexHistory', compact('archives'));
     }
 

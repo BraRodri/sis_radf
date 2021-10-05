@@ -37,7 +37,7 @@
                     <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">A time</a>
                         <a class="dropdown-item {{ ! Route::is('deteccionFacial.index') ?: 'active' }}"  href="{{route('deteccionFacial.index')}}">Detección Facial</a>
-                        <a class="dropdown-item {{ ! Route::is('deteccionMovimiento.index') ?: 'active'}}" href="{{route('deteccionMovimiento.index')}}">Detección Movimiento</a>
+                        <a class="dropdown-item {{ ! Route::is('deteccionMovimiento.index') ?: 'active'}}" href="{{route('deteccionMovimiento.index')}}">Monitoreo de Area</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Recorrido GPS</a>
                     </div>

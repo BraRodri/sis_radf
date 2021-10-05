@@ -24,6 +24,14 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('storage-link', function () {
+    Artisan::call('storage:link');
+});
+
+Route::get('config-clear', function () {
+    Artisan::call('cache:clear');
+});
+
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function () {
