@@ -23,7 +23,12 @@
                         <ul class="list-group">
                             @if(count($datos) > 0)
                                 @foreach($datos as $key => $value)
-                                    <a href="{{ $value->archivo }}" data-fancybox="galeria-{{ $value->id }}" class="list-group-item list-group-item-action">Ver Archivo</a>
+                                    @if ($value->type == 'image')
+                                        <a href="{{ $value->archivo }}" data-fancybox="galeria-{{ $value->id }}" class="list-group-item list-group-item-action">Ver Archivo</a>
+
+                                        @else
+                                        <a href="{{ $value->archivo }}" target="_blank" class="list-group-item list-group-item-action">Ver Archivo</a>
+                                    @endif
                                 @endforeach
                             @endif
                         </ul>

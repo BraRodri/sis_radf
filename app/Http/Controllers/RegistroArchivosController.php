@@ -49,8 +49,7 @@ class RegistroArchivosController extends Controller
             $detector->toJpeg($nombreAndFormat[0]);
         }
 
-
-    echo json_encode(array('imagen' => $url . '@' . $typeFile[0], 'type' => 'success', 'name' => $name_image));
+        echo json_encode(array('imagen' => $url, 'type' => 'success', 'name' => $name_image, 'typeFile' => $typeFile[0]));
 /*
         if($request->file('image')){
             $image = $request->file('image')->store('public/archivos');
@@ -79,13 +78,11 @@ class RegistroArchivosController extends Controller
             $archivos = $request->nombreArchivos;
             if($archivos){
                 for ($i=0; $i < count($archivos) ; $i++) {
-                    $infoArchivo = explode('@', $archivos[$i]);
                     $post = array(
                         'archive_id' => $id,
-                        //'archivo' => $archivos[$i],
-                        'archivo' => $infoArchivo[0],
+                        'archivo' => $archivos[$i],
                         'active' => 1,
-                        'type' => $infoArchivo[1]
+                        'type' => $request->typeArchivos[$i]
                     );
                     Archives_groups::create($post);
                 }

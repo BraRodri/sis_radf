@@ -68,7 +68,6 @@
 
 
             $('#form-subir-archivos').on('submit', function(e) {
-
                 // evito que propague el submit
                 e.preventDefault();
 
@@ -97,7 +96,8 @@
                         contentType: false,
                         dataType:'json',
                         success: function(response) {
-                            console.log(response);
+
+                            //console.log(response);
                             if(response.type == 'failure'){
                                 var message = '<div class="alert alert-danger"><strong>ERROR!</strong> Se ha producido un error, favor vuelva a intentarlo. Si el error persiste favor comunicarse al administrador.</div>';
                                 $thisModal.find('.modal-body').prepend(message);
@@ -110,7 +110,7 @@
 
                                 setTimeout(function() {
                                     $thisModal.find('.modal-body .alert-danger, .modal-body .alert-success').remove();
-                                    $thisModal.modal('hide');
+                                    //$thisModal.modal('hide');
                                 }, 1000);
 
                                 var retype = null;
@@ -123,20 +123,31 @@
                                             </video>`;
                                 }*/
 
+                                if(response.typeFile == 'image'){
+                                    var verArchivo = `
+                                        <a data-fancybox="gallery" data-fancybox-type="iframe" href="${response.imagen}" data-width="640px !important" data-height="360px" class="btn btn-primary mr-2">
+                                            Ver Archivo
+                                        </a>
+                                    `;
+                                } else {
+                                    var verArchivo = `
+                                        <a href="${response.imagen}" target="_blank" class="btn btn-primary mr-2">
+                                            Ver Archivo
+                                        </a>
+                                    `;
+                                }
 
                                 var bloque = `
                                     <li class="list-group-item d-flex" id="cont__${count}">
                                         <div class="mr-auto pt-2">
                                             ${response.name}
                                         </div>
-                                        <a data-fancybox="gallery" data-fancybox-type="iframe" href="${response.imagen}" data-width="640px !important" data-height="360px" class="btn btn-primary mr-2">
-                                            Ver Archivo
-                                        </a>
 
-
+                                        ${verArchivo}
 
                                         <button type="button" class="btn btn-danger" onclick="myEliminarArchivo(${count})">Eliminar</button>
                                         <input type="hidden" name="nombreArchivos[]" value="${response.imagen}">
+                                        <input type="hidden" name="typeArchivos[]" value="${response.typeFile}">
                                     </li>
                                 `;
 
@@ -147,9 +158,10 @@
                             }
 
                         },
+
                         error: function(xhr, status, error){
                             var err = eval("(" + xhr.responseText + ")");
-                            alert(err.Message);
+                            alert(error);
                         }
                     });
 
