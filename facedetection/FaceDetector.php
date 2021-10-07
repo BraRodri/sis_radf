@@ -61,7 +61,7 @@ class FaceDetector
         $this->detection_data = unserialize(file_get_contents($detection_data));
     }
 
-    public function faceDetect($file)
+    public function faceDetect($file, $type)
     {
         if (is_resource($file)) {
 
@@ -69,7 +69,11 @@ class FaceDetector
 
         } elseif (is_file($file)) {
 
-            $this->canvas = imagecreatefromjpeg($file);
+            if($type == 'png'){
+                $this->canvas = imagecreatefrompng($file);
+            } else {
+                $this->canvas = imagecreatefromjpeg($file);
+            }
 
         } elseif (is_string($file)) {
 

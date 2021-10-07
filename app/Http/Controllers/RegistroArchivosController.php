@@ -45,7 +45,7 @@ class RegistroArchivosController extends Controller
             $path = explode('/', $image);
             $nombreAndFormat = explode('.', $path[2]);
             $detector = new FaceDetector('detection.dat');
-            $detector->faceDetect($request->file('image'));
+            $detector->faceDetect($request->file('image'), $typeFile[1]);
             $detector->toJpeg($nombreAndFormat[0]);
         }
 
