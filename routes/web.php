@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuardiaController;
@@ -94,5 +95,11 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/inventario/history/{inventario}', [InventarioController::class, 'indexHistory'])->name('inventarioHistory.index');
     Route::post('/inventario/history/{inventario}', [InventarioController::class, 'storeHistory'])->name('inventarioHistorial.store');
+
+    //contacto
+    Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
+    Route::post('/contacto/create', [ContactoController::class, 'insert'])->name('contacto.insert');
+    Route::get('/contacto/view', [ContactoController::class, 'view'])->name('contacto.view');
+
 });
 

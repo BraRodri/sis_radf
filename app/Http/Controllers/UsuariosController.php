@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Batallones_users;
 use App\Models\Brigada_users;
 use App\Models\Guardia;
+use App\Models\Permisos;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -79,7 +80,19 @@ class UsuariosController extends Controller
         '1' => 'Administrador',
         '2' => 'Director',
         '3' => 'Asistencial',
+        '4' => 'No Aplica'
     ];
+
+    public function generate_string($input, $strength = 16) {
+        $input_length = strlen($input);
+        $random_string = '';
+        for($i = 0; $i < $strength; $i++) {
+            $random_character = $input[mt_rand(0, $input_length - 1)];
+            $random_string .= $random_character;
+        }
+
+        return $random_string;
+    }
 
     public function __construct()
     {
@@ -95,6 +108,7 @@ class UsuariosController extends Controller
 
     public function create(Request $request)
     {
+        //dd($request);
         $validar_documento = User::where('document', $request->documento)->get()->count();
         if($validar_documento > 0){
             session()->flash('error', 'failure_document');
@@ -115,10 +129,18 @@ class UsuariosController extends Controller
                     'brigada' => $request->brigada,
                     'email' => $request->correo_personal,
                     'email_corporativo' => $request->correo_corporativo,
-                    'password' => bcrypt($request->password),
                     'estado' => $request->estado,
                     'rol'  => $request->rol
                 );
+
+                $rol = $request->rol;
+
+                if($rol == 4){
+                    $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    $datos['password'] = bcrypt(self::generate_string($permitted_chars, 20));
+                } else {
+                    $datos['password'] = bcrypt($request->password);
+                }
 
                 if(User::create($datos)){
                     session()->flash('error', 'success');
@@ -191,6 +213,7 @@ class UsuariosController extends Controller
         Batallones_users::where('user_id', $id)->delete();
         Brigada_users::where('user_id', $id)->delete();
         Guardia::where('user_id', $id)->delete();
+        Permisos::where('user_id', $id)->delete();
 
         if(User::findOrFail($id)->delete()){
             session()->flash('error', 'delete');

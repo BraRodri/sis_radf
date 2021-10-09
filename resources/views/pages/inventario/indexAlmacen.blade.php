@@ -129,9 +129,11 @@
                                                     </td>
                                                     <td>
                                                         <a href="{{ route('inventario.edit', $value->id) }}" class="btn btn-success"><i class="far fa-edit"></i></a>
-                                                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal-eliminar-producto" data-id="{{$value->id}}" data-id2="{{$value->nombre}}">
-                                                            <i class="far fa-trash-alt"></i>
-                                                        </button>
+                                                        @if(Auth::user()->rol == 1)
+                                                            <button class="btn btn-danger" data-toggle="modal" data-target="#modal-eliminar-producto" data-id="{{$value->id}}" data-id2="{{$value->nombre}}">
+                                                                <i class="far fa-trash-alt"></i>
+                                                            </button>
+                                                        @endif
                                                         <a href="{{ route('inventarioHistory.index', ['inventario' => $value->id]) }}" class="btn btn-dark"><i class="fas fa-history"></i></a>
                                                     </td>
                                                 </tr>

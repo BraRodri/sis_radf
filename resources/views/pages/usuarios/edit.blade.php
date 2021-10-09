@@ -142,8 +142,18 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="">Contraseña</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Digite una contraseña...">
+                                    <label for="">ROL<span class="text-danger">*</span></label>
+                                    <select class="custom-select select-search" id="rol_select" name="rol" required>
+                                        <option disabled value="">Seleccione...</option>
+                                        @if(count($roles) > 0)
+                                            @foreach($roles as $key => $value)
+                                                @php
+                                                    $selected = (isset($user->rol) && !empty($user->rol) && $user->rol == $key)? 'selected="selected"' : '';
+                                                @endphp
+                                                <option value="{{ $key }}" {{ $selected }}>{{ $value }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="">Estado<span class="text-danger">*</span></label>
@@ -159,19 +169,9 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="">ROL<span class="text-danger">*</span></label>
-                                    <select class="custom-select select-search" id="rol" name="rol" required>
-                                        <option disabled value="">Seleccione...</option>
-                                        @if(count($roles) > 0)
-                                            @foreach($roles as $key => $value)
-                                                @php
-                                                    $selected = (isset($user->rol) && !empty($user->rol) && $user->rol == $key)? 'selected="selected"' : '';
-                                                @endphp
-                                                <option value="{{ $key }}" {{ $selected }}>{{ $value }}</option>
-                                            @endforeach
-                                        @endif
-                                    </select>
+                                <div class="form-group col-md-4" id="div_pass">
+                                    <label for="">Contraseña</label>
+                                    <input type="password" class="form-control" id="password_input" name="password" placeholder="Digite una contraseña...">
                                 </div>
                             </div>
 
@@ -192,5 +192,38 @@
     </div>
 
     <x-slot name="js">
+
+        <script>
+            $(document).ready(function(){
+                var data = jQuery('select[id=rol_select]').find(':selected').val();
+                if(data != ''){
+
+                    if(data == '4'){
+                        $('#div_pass').hide();
+                        $('#password_input').attr("required", false);
+                    } else {
+                        $('#div_pass').show();
+                        $('#password_input').attr("required", true);
+                    }
+
+                }
+            });
+
+            jQuery('select[id=rol_select]').change(function() {
+                var data = jQuery(this).find(':selected').val();
+                if(data != ''){
+
+                    if(data == '4'){
+                        $('#div_pass').hide();
+                        $('#password_input').attr("required", false);
+                    } else {
+                        $('#div_pass').show();
+                        $('#password_input').attr("required", true);
+                    }
+
+                }
+            });
+        </script>
+
     </x-slot>
 </x-app-layout>

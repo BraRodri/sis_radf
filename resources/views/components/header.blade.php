@@ -25,23 +25,27 @@
                         <a class="dropdown-item {{ ! Route::is('registro.historial') ?: 'active' }}" href="{{ route('registro.historial') }}">Historial</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown
-                    {{ ! Route::is('deteccionFacial.index') ?: 'active' }}
-                    {{ ! Route::is('historialFacial.index') ?: 'active' }}
-                    {{ ! Route::is('deteccionMovimiento.index') ?: 'active' }}"
-                >
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        SIS RADF
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">A time</a>
-                        <a class="dropdown-item {{ ! Route::is('deteccionFacial.index') ?: 'active' }}"  href="{{route('deteccionFacial.index')}}">Detección Facial</a>
-                        <a class="dropdown-item {{ ! Route::is('deteccionMovimiento.index') ?: 'active'}}" href="{{route('deteccionMovimiento.index')}}">Monitoreo de Area</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Recorrido GPS</a>
-                    </div>
-                </li>
+
+                @if(Auth::user()->rol == 1 || Auth::user()->rol == 2)
+                    <li class="nav-item dropdown
+                        {{ ! Route::is('deteccionFacial.index') ?: 'active' }}
+                        {{ ! Route::is('historialFacial.index') ?: 'active' }}
+                        {{ ! Route::is('deteccionMovimiento.index') ?: 'active' }}"
+                    >
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            SIS RADF
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">A time</a>
+                            <a class="dropdown-item {{ ! Route::is('deteccionFacial.index') ?: 'active' }}"  href="{{route('deteccionFacial.index')}}">Detección Facial</a>
+                            <a class="dropdown-item {{ ! Route::is('deteccionMovimiento.index') ?: 'active'}}" href="{{route('deteccionMovimiento.index')}}">Monitoreo de Area</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Recorrido GPS</a>
+                        </div>
+                    </li>
+                @endif
+
                 <li class="nav-item dropdown {{ ! Route::is('seccional.brigada') ?: 'active' }} {{ ! Route::is('seccional.batallones') ?: 'active' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,7 +56,13 @@
                         <a class="dropdown-item {{ ! Route::is('seccional.batallones') ?: 'active' }}" href="{{ route('seccional.batallones') }}">Batallones</a>
                     </div>
                 </li>
-                <li class="nav-item dropdown {{ ! Route::is('usuarios') ?: 'active' }} {{ ! Route::is('guardia') ?: 'active' }} {{ ! Route::is('permisos') ?: 'active' }}">
+
+                <li class="nav-item dropdown
+                    {{ ! Route::is('usuarios') ?: 'active' }}
+                    {{ ! Route::is('guardia') ?: 'active' }}
+                    {{ ! Route::is('permisos') ?: 'active' }}
+                    {{ ! Route::is('contacto.view') ?: 'active' }}
+                ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Usuarios
@@ -61,8 +71,10 @@
                         <a class="dropdown-item {{ ! Route::is('usuarios') ?: 'active' }}" href="{{ route('usuarios') }}">Listar / Agregar / Permisos y demas</a>
                         <a class="dropdown-item {{ ! Route::is('guardia') ?: 'active' }}" href="{{ route('guardia') }}">Guardia</a>
                         <a class="dropdown-item {{ ! Route::is('permisos') ?: 'active' }}" href="{{ route('permisos') }}">Permisos</a>
+                        <a class="dropdown-item {{ ! Route::is('contacto.view') ?: 'active' }}" href="{{ route('contacto.view') }}">Mensajes de Contacto</a>
                     </div>
                 </li>
+
                 <li class="nav-item dropdown {{ ! Route::is('inventarioAlimentos.index') ?: 'active' }}
                     {{ ! Route::is('inventarioAlmacen.index') ?: 'active' }}
                     {{ ! Route::is('inventarioArmamento.index') ?: 'active' }}
@@ -79,8 +91,9 @@
                         <a class="dropdown-item {{ ! Route::is('inventarioInsumos.index') ?: 'active' }}" href="{{route('inventarioInsumos.index')}}">Insumos Sanidad Militar</a>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
+
+                <li class="nav-item {{ ! Route::is('contacto') ?: 'active' }}">
+                    <a class="nav-link" href="{{ route('contacto') }}">Contacto</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

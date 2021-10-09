@@ -142,9 +142,11 @@
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('usuarios.view', $value->id) }}" class="btn btn-success"><i class="far fa-edit"></i></a>
-                                                    <button class="btn btn-danger" data-toggle="modal" data-target="#modal-eliminar-user" data-id="{{$value->id}}" data-id2="{{$value->names}}">
-                                                        <i class="far fa-trash-alt"></i>
-                                                    </button>
+                                                    @if(Auth::user()->rol == 1)
+                                                        <button class="btn btn-danger" data-toggle="modal" data-target="#modal-eliminar-user" data-id="{{$value->id}}" data-id2="{{$value->names}}">
+                                                            <i class="far fa-trash-alt"></i>
+                                                        </button>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -177,6 +179,21 @@
                     modal.find('.modal-body #idUser').val(id);
                     modal.find('.modal-body #name_user').text(names);
                 });
+            });
+
+            jQuery('select[id=rol_select]').change(function() {
+                var data = jQuery(this).find(':selected').val();
+                if(data != ''){
+
+                    if(data == '4'){
+                        $('#div_pass').hide();
+                        $('#password_input').attr("required", false);
+                    } else {
+                        $('#div_pass').show();
+                        $('#password_input').attr("required", true);
+                    }
+
+                }
             });
 
         </script>

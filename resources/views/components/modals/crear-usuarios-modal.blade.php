@@ -110,8 +110,14 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="">Contraseña<span class="text-danger">*</span></label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Digite una contraseña..." required>
+                            <label for="">ROL<span class="text-danger">*</span></label>
+                            <select class="custom-select select-search" id="rol_select" name="rol" required>
+                                <option selected disabled value="">Seleccione...</option>
+                                <option value="1">Administrador</option>
+                                <option value="2">Director</option>
+                                <option value="3">Asistencial</option>
+                                <option value="4">No Aplica</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="">Estado<span class="text-danger">*</span></label>
@@ -123,14 +129,9 @@
                                 <option value="Reserva">Reserva</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="">ROL<span class="text-danger">*</span></label>
-                            <select class="custom-select select-search" id="rol" name="rol" required>
-                                <option selected disabled value="">Seleccione...</option>
-                                <option value="1">Administrador</option>
-                                <option value="2">Director</option>
-                                <option value="3">Asistencial</option>
-                            </select>
+                        <div class="form-group col-md-4" id="div_pass">
+                            <label for="">Contraseña<span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="password_input" name="password" placeholder="Digite una contraseña..." required>
                         </div>
                     </div>
 

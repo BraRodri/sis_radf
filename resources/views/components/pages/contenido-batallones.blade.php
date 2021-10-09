@@ -37,7 +37,11 @@
                                 <td>{{ $value->user->names }}</td>
                                 <td>{{ $value->user->grado }}</td>
                                 <td>{{ $value->user->distintivo }}</td>
-                                <td><a href="{{ route('seccional.batallon.delete', $value->id) }}" class="btn btn-danger">Eliminar</a></td>
+                                <td>
+                                    @if(Auth::user()->rol == 1)
+                                        <a href="{{ route('seccional.batallon.delete', $value->id) }}" class="btn btn-danger">Eliminar</a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                     @endif

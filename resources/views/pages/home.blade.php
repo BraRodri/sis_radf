@@ -10,6 +10,7 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
                 <!-- Slide One - Set the background image for this slide in the line below -->
@@ -26,6 +27,12 @@
                 </div>
                 <!-- Slide Three - Set the background image for this slide in the line below -->
                 <div class="carousel-item" style="background-image: url('{{ asset('images/tres3.jpeg') }}'); background-size: contain;">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h2 class="display-4"></h2>
+                    </div>
+                </div>
+                <!-- Slide Three - Set the background image for this slide in the line below -->
+                <div class="carousel-item" style="background-image: url('{{ asset('images/cuatro4.jpeg') }}'); background-size: contain;">
                     <div class="carousel-caption d-none d-md-block">
                         <h2 class="display-4"></h2>
                     </div>

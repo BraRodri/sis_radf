@@ -38,6 +38,7 @@
             </button>
         </div>
 
+        @php /*
         <div class="text-center">
             @if (Route::has('password.request'))
                 <a class="btn btn-link" href="{{ route('password.request') }}">
@@ -45,7 +46,7 @@
                 </a>
             @endif
         </div>
-
+        */ @endphp
 
     </form>
 </div>

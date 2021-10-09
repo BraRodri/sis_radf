@@ -65,7 +65,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-danger" id="btn-subir-archivo"><i class="fas fa-trash"></i> Eliminar</button>
+                    @if(Auth::user()->rol == 1)
+                        <button type="submit" class="btn btn-danger" id="btn-subir-archivo"><i class="fas fa-trash"></i> Eliminar</button>
+                    @endif
                 </div>
             </form>
         </div>
