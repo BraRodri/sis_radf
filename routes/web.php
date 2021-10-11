@@ -10,6 +10,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\SeccionalController;
 use App\Http\Controllers\InventarioController;
 use App\Http\Controllers\RegistroArchivosController;
+use App\Http\Controllers\RecepcionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -100,6 +101,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
     Route::post('/contacto/create', [ContactoController::class, 'insert'])->name('contacto.insert');
     Route::get('/contacto/view', [ContactoController::class, 'view'])->name('contacto.view');
+
+    //Recepción
+    Route::get('/recepcion', [RecepcionController::class, 'index'])->name('recepcion');
+    Route::post('/recepcion', [RecepcionController::class, 'index'])->name('recepcion');
+    Route::post('/recepcion/store', [RecepcionController::class, 'store'])->name('recepcion.store');
+    Route::post('/recepcion/update/{recepcion}', [RecepcionController::class, 'update'])->name('recepcion.update');
+    Route::get('/recepcion/historyCount', [RecepcionController::class, 'historyCountReception'])->name('recepcionHistoryCount');
+    Route::get('/recepcion/historyList/{date}', [RecepcionController::class, 'historyListReception'])->name('recepcionHistoryList');
+    Route::get('/recepcion/historyDetails/{recepcion}', [RecepcionController::class, 'historyDetailsReception'])->name('recepcionHistoryDetails');
 
 });
 

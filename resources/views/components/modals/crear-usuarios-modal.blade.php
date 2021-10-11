@@ -10,7 +10,11 @@
             <form action="{{ route('usuarios.create') }}" method="POST" class="needs-validation" novalidate>
                 @csrf
                 <div class="modal-body">
-
+                    @if(Route::currentRouteName() === 'usuarios')
+                        <input type="hidden" name="route_name" value="usuarios">
+                    @elseif(Route::currentRouteName() === 'recepcion')
+                        <input type="hidden" name="route_name" value="recepcion">
+                    @endif
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="">Documento<span class="text-danger">*</span></label>

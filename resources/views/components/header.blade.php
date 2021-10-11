@@ -37,7 +37,6 @@
                             SIS RADF
                         </a>
                         <div class="dropdown-menu dropdown-menu-right animate slideIn" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">A time</a>
                             <a class="dropdown-item {{ ! Route::is('deteccionFacial.index') ?: 'active' }}"  href="{{route('deteccionFacial.index')}}">Detección Facial</a>
                             <a class="dropdown-item {{ ! Route::is('deteccionMovimiento.index') ?: 'active'}}" href="{{route('deteccionMovimiento.index')}}">Monitoreo de Area</a>
                             <div class="dropdown-divider"></div>
@@ -62,6 +61,7 @@
                     {{ ! Route::is('guardia') ?: 'active' }}
                     {{ ! Route::is('permisos') ?: 'active' }}
                     {{ ! Route::is('contacto.view') ?: 'active' }}
+                    {{ ! Route::is('recepcion') ?: 'active' }}
                 ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,6 +72,7 @@
                         <a class="dropdown-item {{ ! Route::is('guardia') ?: 'active' }}" href="{{ route('guardia') }}">Guardia</a>
                         <a class="dropdown-item {{ ! Route::is('permisos') ?: 'active' }}" href="{{ route('permisos') }}">Permisos</a>
                         <a class="dropdown-item {{ ! Route::is('contacto.view') ?: 'active' }}" href="{{ route('contacto.view') }}">Mensajes de Contacto</a>
+                        <a class="dropdown-item {{ ! Route::is('recepcion') ?: 'active' }}" href="{{ route('recepcion') }}">Recepción</a>
                     </div>
                 </li>
 

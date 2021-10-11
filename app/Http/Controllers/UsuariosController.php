@@ -108,7 +108,98 @@ class UsuariosController extends Controller
 
     public function create(Request $request)
     {
-        //dd($request);
+        if($request->route_name === "recepcion"){
+            $validar_documento = User::where('document', $request->documento)->get()->count();
+            if($validar_documento > 0){
+                session()->flash('errorUser', 'failure_document');
+                return redirect()->route('recepcion');
+            } else {
+                $validar_correo = User::where('email', $request->correo_personal)->get()->count();
+                if($validar_correo > 0){
+                    session()->flash('errorUser', 'failure_email');
+                    return redirect()->route('recepcion');
+                } else {
+
+                    $datos = array(
+                        'document' => $request->documento,
+                        'names' => $request->nombres,
+                        'grado' => $request->grado,
+                        'distintivo' => $request->distintivo,
+                        'arma' => $request->arma,
+                        'brigada' => $request->brigada,
+                        'email' => $request->correo_personal,
+                        'email_corporativo' => $request->correo_corporativo,
+                        'estado' => $request->estado,
+                        'rol'  => $request->rol
+                    );
+
+                    $rol = $request->rol;
+
+                    if($rol == 4){
+                        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        $datos['password'] = bcrypt(self::generate_string($permitted_chars, 20));
+                    } else {
+                        $datos['password'] = bcrypt($request->password);
+                    }
+
+                    if(User::create($datos)){
+                        $user = User::where('document', $request->documento)->first();
+                        return view('pages.recepcion.index', compact('user'));
+
+                        //session()->flash('error', 'success');
+                        //return redirect()->route('usuarios');
+                    } else {
+                        session()->flash('errorUser', 'failure');
+                        return redirect()->route('recepcion');
+                    }
+
+                }
+            }
+        }else if($request->route_name === "usuarios"){
+            $validar_documento = User::where('document', $request->documento)->get()->count();
+            if($validar_documento > 0){
+                session()->flash('error', 'failure_document');
+                return redirect()->route('usuarios');
+            } else {
+                $validar_correo = User::where('email', $request->correo_personal)->get()->count();
+                if($validar_correo > 0){
+                    session()->flash('error', 'failure_email');
+                    return redirect()->route('usuarios');
+                } else {
+
+                    $datos = array(
+                        'document' => $request->documento,
+                        'names' => $request->nombres,
+                        'grado' => $request->grado,
+                        'distintivo' => $request->distintivo,
+                        'arma' => $request->arma,
+                        'brigada' => $request->brigada,
+                        'email' => $request->correo_personal,
+                        'email_corporativo' => $request->correo_corporativo,
+                        'estado' => $request->estado,
+                        'rol'  => $request->rol
+                    );
+
+                    $rol = $request->rol;
+
+                    if($rol == 4){
+                        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                        $datos['password'] = bcrypt(self::generate_string($permitted_chars, 20));
+                    } else {
+                        $datos['password'] = bcrypt($request->password);
+                    }
+
+                    if(User::create($datos)){
+                        session()->flash('error', 'success');
+                        return redirect()->route('usuarios');
+                    } else {
+                        session()->flash('error', 'failure');
+                        return redirect()->route('usuarios');
+                    }
+
+                }
+            }
+        }
         $validar_documento = User::where('document', $request->documento)->get()->count();
         if($validar_documento > 0){
             session()->flash('error', 'failure_document');

@@ -39,6 +39,10 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+    public function recepciones(){
+        return $this->hasMany(Recepcion::class);
+    }
+
     /**
      * The attributes that should be cast to native types.
      *
