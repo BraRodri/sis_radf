@@ -23,11 +23,21 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            //'name' => $this->faker->name(),
+            //'email_verified_at' => now(),
+            //'remember_token' => Str::random(10),
+
+            'document' => 1090887888,
+            'names' => $this->faker->name(),
+            'grado' => 'Oficial',
+            'distintivo' => 'Subteniente',
+            'arma' => "Infantería 'paso de vencedores'",
+            'brigada' => 'TRIGESIMA BRIGADA N° 30 CUCUTA DIV02',
             'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'email_corporativo' => $this->faker->unique()->safeEmail(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'estado' => 'Activo',
+            'rol' => 1
         ];
     }
 
