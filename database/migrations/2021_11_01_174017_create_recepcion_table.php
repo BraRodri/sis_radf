@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReceptionsTable extends Migration
+class CreateRecepcionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,7 +15,7 @@ class CreateReceptionsTable extends Migration
     {
         Schema::create('recepcion', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->integer('documento_user');
             $table->time('hora_entrada');
             $table->time('hora_salida');
@@ -33,6 +33,6 @@ class CreateReceptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reception');
+        Schema::dropIfExists('recepcion');
     }
 }
